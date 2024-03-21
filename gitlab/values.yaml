@@ -1230,7 +1230,7 @@ shared-secrets:
     keyAlgorithm: "rsa"
     keySize: "4096"
     expiry: "3650d"
-    caSubject: "GitLab Helm Chart"
+    caSubject: "GitLab Helm Chart" # TODO:
   env: production
   serviceAccount:
     enabled: true
@@ -1251,34 +1251,6 @@ shared-secrets:
 ## See requirements.yaml for current version
 gitlab-runner:
   install: false
-#  rbac:
-#    create: true
-#  runners:
-#    locked: false
-#    # Set secret to an arbitrary value because the runner chart renders the gitlab-runner.secret template only if it is not empty.
-#    # The parent/GitLab chart overrides the template to render the actual secret name.
-#    secret: "nonempty"
-#    config: |
-#      [[runners]]
-#        [runners.kubernetes]
-#        image = "ubuntu:22.04"
-#        {{- if .Values.global.minio.enabled }}
-#        [[runners.kubernetes.host_aliases]]
-#          ip = "192.168.1.217"
-#          hostnames = ["gitlab.192-168-4-83.nip.io", "minio.192-168-4-83.nip.io", "registry.192-168-4-83.nip.io", "kas.192-168-4-83.nip.io"]
-#        [runners.cache]
-#          Type = "s3"
-#          Path = "gitlab-runner"
-#          Shared = true
-#          [runners.cache.s3]
-#            ServerAddress = {{ include "gitlab-runner.cache-tpl.s3ServerAddress" . }}
-#            BucketName = "runner-cache"
-#            BucketLocation = "us-east-1"
-#            Insecure = true
-#        {{ end }}
-#  podAnnotations:
-#    gitlab.com/prometheus_scrape: "true"
-#    gitlab.com/prometheus_port: 9252
 
 traefik:
   install: false
@@ -1297,7 +1269,7 @@ gitlab:
     antiAffinityLabels:
       matchLabels:
         app: gitaly
-    backups:
+    backups: # TODO:
       cron:
         enabled: true
         concurrencyPolicy: Replace
