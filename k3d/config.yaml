@@ -1,7 +1,7 @@
 apiVersion: k3d.io/v1alpha5 # this will change in the future as we make everything more stable
 kind: Simple # internally, we also have a Cluster config, which is not yet available externally
 metadata:
-  name: gitlab-help # name that you want to give to your cluster (will still be prefixed with `k3d-`)
+  name: gitlab # name that you want to give to your cluster (will still be prefixed with `k3d-`)
 servers: 1 # same as `--servers 1`
 agents: 2 # same as `--agents 2`
 kubeAPI: # same as `--api-port myhost.my.domain:6445` (where the name would resolve to 127.0.0.1)
@@ -27,6 +27,9 @@ ports:
     nodeFilters:
       - loadbalancer
   - port: 443:443 # same as `--port '8080:80@loadbalancer'`
+    nodeFilters:
+      - loadbalancer
+  - port: 22:22 # same as `--port '8080:80@loadbalancer'`
     nodeFilters:
       - loadbalancer
 #env:
@@ -64,7 +67,7 @@ options:
     wait: true # wait for cluster to be usable before returning; same as `--wait` (default: true)
     timeout: "60s" # wait timeout before aborting; same as `--timeout 60s`
     disableLoadbalancer: false # same as `--no-lb`
-    disableImageVolume: true # same as `--no-image-volume`
+    # disableImageVolume: true # same as `--no-image-volume`
     disableRollback: false # same as `--no-Rollback`
     loadbalancer:
       configOverrides:

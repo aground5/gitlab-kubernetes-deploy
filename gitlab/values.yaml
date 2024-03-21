@@ -52,7 +52,7 @@ global:
   edition: ee
 
   ## https://docs.gitlab.com/charts/charts/globals#gitlab-version
-  gitlabVersion: "16.9.1"
+  gitlabVersion: "16.9.2"
 
   ## https://docs.gitlab.com/charts/charts/globals#application-resource
   application:
@@ -537,7 +537,7 @@ global:
       environment:
 
     gitlab_docs:
-      enabled: true
+      enabled: false
       host: "http://gitdoc.192-168-4-83.nip.io"
 
     smartcard:

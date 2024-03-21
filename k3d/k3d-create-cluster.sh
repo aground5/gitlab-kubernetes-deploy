@@ -1,4 +1,6 @@
 #!/bin/sh
+sudo mkdir /data/k3s-home
+sudo chown -R ${LOGNAME}:docker /data/k3s-home
 
 mkdir /data/k3s-home/images
 mkdir /data/k3s-home/server-0

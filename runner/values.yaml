@@ -49,13 +49,13 @@ imagePullPolicy: IfNotPresent
 ## The GitLab Server URL (with protocol) that want to register the runner against
 ## ref: https://docs.gitlab.com/runner/commands/index.html#gitlab-runner-register
 ##
-gitlabUrl: https://gitlab.192-168-1-217.nip.io/
+gitlabUrl: https://gitlab.192-168-4-83.nip.io/
 
 ## DEPRECATED: The Registration Token for adding new Runners to the GitLab Server.
 ##
 ## ref: https://docs.gitlab.com/ee/ci/runners/new_creation_workflow.html
 ##
-runnerRegistrationToken: "GR1348941wsrr6XYmBKLG3cxpqT8L"
+runnerRegistrationToken: "acXqsEKIUGd2ZIgn18Uz5MW1v3XfKCUsdOIWYSHkItJiD5FpMA5oSsw5BFXO2gjg"
 
 ## The Runner Token for adding new Runners to the GitLab Server. This must
 ## be retrieved from your GitLab instance. It is the token of an already registered runner.
@@ -330,12 +330,20 @@ runners:
       [runners.kubernetes]
         namespace = "{{.Release.Namespace}}"
         image = "alpine"
+        [[runners.kubernetes.volumes.secret]]
+          name = "gitlab-runner-ssh-identity"
+          mount_path = "/ssh-identity"
+          read_only = false
+          [runners.kubernetes.volumes.secret.items]
+            "id_rsa" = "id_rsa"
+            "id_rsa.pub" = "id_rsa.pub"
+            "known_hosts" = "known_hosts"
       [runners.cache]
         Type = "s3"
         Path = "gitlab-runner"
         Shared = true
         [runners.cache.s3]
-          ServerAddress = "minio.192-168-1-217.nip.io"
+          ServerAddress = "minio.192-168-4-83.nip.io"
           BucketName = "runner-cache"
           BucketLocation = "us-east-1"
           Insecure = true
@@ -360,11 +368,11 @@ runners:
   ##
   ## ref: https://docs.gitlab.com/ee/ci/runners/new_creation_workflow.html
   ##
-  # tags: ""
+  tags: "ipbtd-dont-use-this-tag"
 
   ## Specify the name for the runner.
   ##
-  # name: ""
+  name: "instance-runner-for-initial-pipeline"
 
   ## DEPRECATED: Specify the maximum timeout (in seconds) that will be set for job when using this Runner
   ##

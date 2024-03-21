@@ -5,4 +5,4 @@ kubectl create secret generic gitlab-wildcard-tls -n sonarqube \
     --from-file=tls.key=./secret/tls.key
 
 kubectl create secret generic gitlab-wildcard-tls-ca -n sonarqube \
-    --from-file=gitlab.192-168-1-217.nip.io.crt=./secret/cfssl_ca
+    --from-file=gitlab.192-168-4-83.nip.io.crt=./secret/gitlab.192-168-4-83.nip.io.crt
