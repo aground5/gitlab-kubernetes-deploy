@@ -621,7 +621,7 @@ global:
     # secret:
     ## https://docs.gitlab.com/charts/charts/globals#tcp-proxy-protocol
     tcp:
-      proxyProtocol: true
+      proxyProtocol: false
 
   ## Rails application secrets
   ## Secret created according to https://docs.gitlab.com/charts/installation/secrets#gitlab-rails-secret
