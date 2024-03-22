@@ -1230,7 +1230,7 @@ shared-secrets:
     keyAlgorithm: "rsa"
     keySize: "4096"
     expiry: "3650d"
-    caSubject: "GitLab Helm Chart" # TODO:
+    caSubject: "GitLab Helm Chart" # TODO: f
   env: production
   serviceAccount:
     enabled: true
@@ -1272,6 +1272,7 @@ gitlab:
     backups: # TODO:
       cron:
         enabled: true
+        extraArgs: --maximum-backups 5
         concurrencyPolicy: Replace
         failedJobsHistoryLimit: 1
         schedule: "0 1 * * *"
